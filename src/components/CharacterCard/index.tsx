@@ -14,7 +14,6 @@ interface CharacterCardProps {
   location: string;
   species: string;
   status: string;
-  gender: string;
 }
 
 export function CharacterCard({
@@ -23,7 +22,6 @@ export function CharacterCard({
   location,
   species,
   status,
-  gender,
 }: CharacterCardProps) {
   return (
     <CardContainer>

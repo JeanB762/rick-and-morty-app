@@ -5,6 +5,8 @@ import * as z from 'zod';
 import { MagnifyingGlass } from 'phosphor-react';
 
 import { SearchFormContainer } from './styles';
+import { useContext } from 'react';
+import { QueryContext } from '@/context/QueryContext';
 
 const searchFormSchema = z.object({
   query: z.string(),
@@ -13,6 +15,7 @@ const searchFormSchema = z.object({
 type SearchFormInputs = z.infer<typeof searchFormSchema>;
 
 export function SearchForm() {
+  const { query, setQuerySearch } = useContext(QueryContext);
   const {
     register,
     handleSubmit,
@@ -22,12 +25,18 @@ export function SearchForm() {
   });
 
   async function handleSearchTransactions(data: SearchFormInputs) {
+    setQuerySearch(data.query);
     console.log(data);
   }
 
   return (
     <SearchFormContainer onSubmit={handleSubmit(handleSearchTransactions)}>
-      <input type='text' placeholder='Character Name' {...register('query')} />
+      <input
+        type='text'
+        placeholder='Character Name'
+        {...register('query')}
+        defaultValue={query}
+      />
       <button type='submit' disabled={isSubmitting}>
         <MagnifyingGlass size={20} />
         Search
