@@ -7,9 +7,9 @@ import { Header } from '@/components/Header';
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={defaultTheme}>
+      <GlobalStyle />
       <Header />
       <Component {...pageProps} />
-      <GlobalStyle />
     </ThemeProvider>
   );
 }
