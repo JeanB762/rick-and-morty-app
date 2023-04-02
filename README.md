@@ -18,12 +18,18 @@
     ### `npm run dev`
   - Navigate to [http://localhost:3000](http://localhost:3000) in your web browser to see the application running.
 
+  To run Storybook for components documentation
+    - Run 
+    ## `npm run storybook`
+    - Navigate to [http://localhost:6006](http://localhost:6006)
+
 ## Technologies Used
   - Next.js
   - React.js
   - TypeScript
   - Styled Components
   - React-query
+  - StoryBook
 
 ## API Reference
   This application uses data from the Rick and Morty API. You can find the API documentation [here](https://rickandmortyapi.com/documentation/).
