@@ -22,7 +22,8 @@ export default function Episode() {
     const { data, status } = useCharacter({ characterId });
 
     if (status === 'error') return <p>Error :(</p>;
-    if (data) return <CharacterCard {...data} />;
+    if (data)
+      return <CharacterCard href={`/characters/${characterId}`} {...data} />;
     return <></>;
   }
 

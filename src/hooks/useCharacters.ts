@@ -21,6 +21,16 @@ export interface Character {
   created: string;
 }
 
+interface CharacterResponse {
+  info: {
+    count: number;
+    pages: number;
+    next: string | null;
+    prev: string | null;
+  };
+  results: Character[];
+}
+
 interface CharactersProps {
   page: number;
   name?: string;
@@ -29,7 +39,7 @@ interface CharactersProps {
 export function useCharacters({
   page,
   name,
-}: CharactersProps): UseQueryResult<Character[], Error> {
+}: CharactersProps): UseQueryResult<CharacterResponse, Error> {
   return useQuery(['characters', page, name], async () => {
     const response = await fetch(
       `https://rickandmortyapi.com/api/character/?page=${page}&name=${
@@ -40,6 +50,6 @@ export function useCharacters({
     if (!response.ok) {
       throw new Error('Cahracters not available');
     }
-    return data.results;
+    return data;
   });
 }

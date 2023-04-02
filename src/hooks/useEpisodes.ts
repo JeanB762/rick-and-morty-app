@@ -10,6 +10,16 @@ export interface Episode {
   created: string;
 }
 
+export interface EpisodesResponse {
+  info: {
+    count: number;
+    pages: number;
+    next: string | null;
+    prev: string | null;
+  };
+  results: Episode[];
+}
+
 interface EpisodesProps {
   page: number;
   name?: string;
@@ -18,7 +28,7 @@ interface EpisodesProps {
 export function useEpisodes({
   page,
   name,
-}: EpisodesProps): UseQueryResult<Episode[], Error> {
+}: EpisodesProps): UseQueryResult<EpisodesResponse, Error> {
   return useQuery(['episodes', page, name], async () => {
     const response = await fetch(
       `https://rickandmortyapi.com/api/episode/?page=${page}&name=${
@@ -29,6 +39,6 @@ export function useEpisodes({
     if (!response.ok) {
       throw new Error('Episodes not available');
     }
-    return data.results;
+    return data;
   });
 }

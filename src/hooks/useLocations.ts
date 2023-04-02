@@ -10,6 +10,16 @@ export interface Location {
   created: string;
 }
 
+interface LocationsResponse {
+  info: {
+    count: number;
+    pages: number;
+    next: string | null;
+    prev: string | null;
+  };
+  results: Location[];
+}
+
 interface LocationsProps {
   page: number;
   name?: string;
@@ -18,7 +28,7 @@ interface LocationsProps {
 export function useLocations({
   page,
   name,
-}: LocationsProps): UseQueryResult<Location[], Error> {
+}: LocationsProps): UseQueryResult<LocationsResponse, Error> {
   return useQuery(['locations', page, name], async () => {
     const response = await fetch(
       `https://rickandmortyapi.com/api/location/?page=${page}&name=${
@@ -29,6 +39,6 @@ export function useLocations({
     if (!response.ok) {
       throw new Error('Locations not available');
     }
-    return data.results;
+    return data;
   });
 }

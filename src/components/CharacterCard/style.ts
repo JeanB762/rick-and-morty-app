@@ -1,6 +1,8 @@
+import Image from 'next/image';
+import Link from 'next/link';
 import styled from 'styled-components';
 
-export const CardContainer = styled.div`
+export const CardContainer = styled(Link)`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,6 +13,13 @@ export const CardContainer = styled.div`
   border-radius: 8px;
   width: 14rem;
   height: 17.5rem;
+  text-decoration: none;
+
+  &:hover {
+    box-shadow: 0px 0px 15px 10px ${({ theme }) => theme['green-500']};
+    -moz-box-shadow: 0px 0px 15px 10px ${({ theme }) => theme['green-500']};
+    -webkit-box-shadow: 0px 0px 15px 10px ${({ theme }) => theme['green-500']};
+  }
 
   svg {
     color: ${({ theme }) => theme['green-300']};
@@ -28,6 +37,11 @@ export const Avatar = styled.img`
   height: 5rem;
   border-radius: 50%;
   margin-bottom: 16px;
+
+  transition: transform 0.3s ease-in-out;
+  ${CardContainer}:hover & {
+    transform: scale(1.25);
+  }
 `;
 
 export const Name = styled.h2`

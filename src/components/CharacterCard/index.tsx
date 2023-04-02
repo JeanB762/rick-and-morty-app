@@ -17,6 +17,7 @@ interface CharacterCardProps {
   };
   species: string;
   status: string;
+  href: string;
 }
 
 export function CharacterCard({
@@ -25,9 +26,10 @@ export function CharacterCard({
   location,
   species,
   status,
+  href,
 }: CharacterCardProps) {
   return (
-    <CardContainer>
+    <CardContainer href={href}>
       <Avatar src={image} alt={name} />
       <Name>{name}</Name>
       <Location>{location.name}</Location>

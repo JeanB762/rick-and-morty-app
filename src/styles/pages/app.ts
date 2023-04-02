@@ -11,7 +11,7 @@ export const GridCardsContainer = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
   justify-items: center;
   margin: 2rem 0;
-  gap: 16px;
+  gap: 2rem;
 `;
 
 export const HeaderInfo = styled.div`
