@@ -1,29 +1,29 @@
+import { useState } from 'react';
 import { CharacterCard } from '@/components/CharacterCard';
 import { SearchForm } from '@/components/SearchForm';
-import { QueryContext } from '@/context/QueryContext';
 import { useCharacters } from '@/hooks/useCharacters';
 import { GridCardsContainer } from '@/styles/pages/app';
-import { useContext, useState } from 'react';
 
 export default function Home() {
   const [page, setPage] = useState(1);
-  const { query } = useContext(QueryContext);
+  const [query, setQuery] = useState('');
   const { data, isLoading, error } = useCharacters({ page, name: query });
 
-  if (isLoading) {
-    return <div>Loading...</div>;
+  function changeQuery(query: string) {
+    setQuery(query);
   }
 
   return (
     <>
-      <SearchForm />
+      <SearchForm query={query} setQuerySearch={changeQuery} />
+      {isLoading && <div>Loading...</div>}
       {error && <div>Error fetching characters: {error.message}</div>}
       <GridCardsContainer>
         {data?.map((character) => (
           <div key={character.id}>
             <CharacterCard
-              avatarUrl={character.image}
-              location={character.location.name}
+              image={character.image}
+              location={character.location}
               name={character.name}
               species={character.species}
               status={character.status}

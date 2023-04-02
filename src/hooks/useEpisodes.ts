@@ -1,6 +1,6 @@
 import { useQuery, UseQueryResult } from 'react-query';
 
-export interface Episodes {
+export interface Episode {
   id: number;
   name: string;
   air_date: string;
@@ -18,7 +18,7 @@ interface EpisodesProps {
 export function useEpisodes({
   page,
   name,
-}: EpisodesProps): UseQueryResult<Episodes[], Error> {
+}: EpisodesProps): UseQueryResult<Episode[], Error> {
   return useQuery(['episodes', page, name], async () => {
     const response = await fetch(
       `https://rickandmortyapi.com/api/episode/?page=${page}&name=${
@@ -27,7 +27,7 @@ export function useEpisodes({
     );
     const data = await response.json();
     if (!response.ok) {
-      throw new Error('Episode not available');
+      throw new Error('Episodes not available');
     }
     return data.results;
   });

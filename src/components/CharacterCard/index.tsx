@@ -9,15 +9,18 @@ import {
 } from './style';
 
 interface CharacterCardProps {
-  avatarUrl: string;
+  image: string;
   name: string;
-  location: string;
+  location: {
+    name: string;
+    url: string;
+  };
   species: string;
   status: string;
 }
 
 export function CharacterCard({
-  avatarUrl,
+  image,
   name,
   location,
   species,
@@ -25,9 +28,9 @@ export function CharacterCard({
 }: CharacterCardProps) {
   return (
     <CardContainer>
-      <Avatar src={avatarUrl} alt={name} />
+      <Avatar src={image} alt={name} />
       <Name>{name}</Name>
-      <Location>{location}</Location>
+      <Location>{location.name}</Location>
       <InfoContent>
         <Info>{species}</Info>
         <Info>{status}</Info>

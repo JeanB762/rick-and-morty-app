@@ -8,7 +8,8 @@ export const AppContainer = styled.div`
 
 export const GridCardsContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  justify-items: center;
   margin: 2rem 0;
+  gap: 16px;
 `;

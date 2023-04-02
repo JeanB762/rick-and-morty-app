@@ -1,24 +1,27 @@
+import { useState } from 'react';
+import Link from 'next/link';
+import { ArrowSquareOut } from 'phosphor-react';
 import { SearchForm } from '@/components/SearchForm';
-import { QueryContext } from '@/context/QueryContext';
 import { useEpisodes } from '@/hooks/useEpisodes';
 import {
   TransactionsContainer,
   TransactionsTable,
 } from '@/styles/pages/episodes';
-import { useContext, useState } from 'react';
 
 export default function Episodes() {
   const [page, setPage] = useState(1);
-  const { query } = useContext(QueryContext);
+  const [query, setQuery] = useState('');
   const { data, isLoading, error } = useEpisodes({ page, name: query });
 
-  if (isLoading) {
-    return <div>Loading...</div>;
+  function changeQuery(query: string) {
+    setQuery(query);
   }
 
   return (
     <TransactionsContainer>
-      <SearchForm />
+      <SearchForm query={query} setQuerySearch={changeQuery} />
+      {isLoading && <div>Loading...</div>}
+      {error && <div>Error fetching characters: {error.message}</div>}
       <TransactionsTable>
         <tbody>
           {data?.map((episode) => {
@@ -27,6 +30,11 @@ export default function Episodes() {
                 <td width='50%'>{episode.name}</td>
                 <td>{episode.episode}</td>
                 <td>{episode.air_date}</td>
+                <td>
+                  <Link href={`/episodes/${episode.id}`}>
+                    <ArrowSquareOut size={30} weight='fill' />
+                  </Link>
+                </td>
               </tr>
             );
           })}

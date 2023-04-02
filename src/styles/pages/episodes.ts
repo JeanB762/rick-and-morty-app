@@ -28,3 +28,16 @@ export const TransactionsTable = styled.table`
     }
   }
 `;
+
+export const HeaderInfo = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 16px;
+  background-color: ${({ theme }) => theme['gray-800']};
+  border-top: 2px solid ${({ theme }) => theme['green-500']};
+  border-radius: 8px;
+  width: 100%;
+  max-width: 1120px;
+  margin-top: 1.5rem;
+`;

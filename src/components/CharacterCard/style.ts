@@ -9,8 +9,8 @@ export const CardContainer = styled.div`
   background-color: ${({ theme }) => theme['gray-800']};
   border-top: 2px solid ${({ theme }) => theme['green-500']};
   border-radius: 8px;
-  width: 12.5rem;
-  height: 15.75rem;
+  width: 14rem;
+  height: 17.5rem;
 
   svg {
     color: ${({ theme }) => theme['green-300']};
@@ -34,6 +34,7 @@ export const Name = styled.h2`
   color: ${({ theme }) => theme['gray-300']};
   font-size: 1.25rem;
   margin-bottom: 8px;
+  text-align: center;
 `;
 
 export const Location = styled.p`
