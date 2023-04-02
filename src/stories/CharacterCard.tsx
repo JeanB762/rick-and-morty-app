@@ -26,7 +26,6 @@ export const Card = () => {
         status={character.status}
         id={character.id}
       />
-      ;
     </>
   );
 };
