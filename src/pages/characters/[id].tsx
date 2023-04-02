@@ -1,3 +1,5 @@
+import { Loading } from '@/components/Loading';
+import { NotFoundComponent } from '@/components/NotFound';
 import { useCharacter } from '@/hooks/useCharacter';
 import {
   Container,
@@ -16,6 +18,8 @@ export default function Profile() {
   const { data, isLoading, error } = useCharacter({ characterId });
   return (
     <Container>
+      {isLoading && <Loading />}
+      {error && <NotFoundComponent />}
       <Image src={data?.image} alt={data?.name} />
       <ContentBlock>
         <Field>

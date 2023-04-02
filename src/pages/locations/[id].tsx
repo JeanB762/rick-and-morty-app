@@ -1,4 +1,6 @@
 import { CharacterCard } from '@/components/CharacterCard';
+import { Loading } from '@/components/Loading';
+import { NotFoundComponent } from '@/components/NotFound';
 import { useCharacter } from '@/hooks/useCharacter';
 import { useLocation } from '@/hooks/useLocation';
 import { GridCardsContainer } from '@/styles/pages/app';
@@ -10,13 +12,6 @@ export default function Location() {
   const locationId = router.query.id;
 
   const { data, isLoading, error } = useLocation({ locationId });
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
 
   function Character({ characterId }: { characterId: string }) {
     const { data, status } = useCharacter({ characterId });
@@ -30,6 +25,8 @@ export default function Location() {
   return (
     <div>
       <>
+        {isLoading && <Loading />}
+        {error && <NotFoundComponent />}
         <HeaderInfo>
           <span>{data?.name}</span>
           <span>{data?.type}</span>

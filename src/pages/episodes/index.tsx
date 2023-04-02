@@ -5,6 +5,8 @@ import { SearchForm } from '@/components/SearchForm';
 import { useEpisodes } from '@/hooks/useEpisodes';
 import { TableContainer, TableData } from '@/styles/pages/app';
 import Pagination from '@/components/Pagination/inedx';
+import { NotFoundComponent } from '@/components/NotFound';
+import { Loading } from '@/components/Loading';
 
 export default function Episodes() {
   const [page, setPage] = useState(1);
@@ -27,8 +29,8 @@ export default function Episodes() {
     <>
       <TableContainer>
         <SearchForm query={query} setQuerySearch={changeQuery} />
-        {isLoading && <div>Loading...</div>}
-        {error && <div>Error fetching characters: {error.message}</div>}
+        {isLoading && <Loading />}
+        {error && <NotFoundComponent />}
         <TableData>
           <tbody>
             {data?.results.map((episode) => {
@@ -47,12 +49,14 @@ export default function Episodes() {
             })}
           </tbody>
         </TableData>
-        <Pagination
-          onNext={onNext}
-          onPrev={onPrev}
-          hasPrev={!!data?.info.prev}
-          hasNext={!!data?.info.next}
-        />
+        {data?.results && (
+          <Pagination
+            onNext={onNext}
+            onPrev={onPrev}
+            hasPrev={!!data?.info.prev}
+            hasNext={!!data?.info.next}
+          />
+        )}
       </TableContainer>
     </>
   );

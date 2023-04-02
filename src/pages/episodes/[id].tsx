@@ -1,4 +1,6 @@
 import { CharacterCard } from '@/components/CharacterCard';
+import { Loading } from '@/components/Loading';
+import { NotFoundComponent } from '@/components/NotFound';
 import { useCharacter } from '@/hooks/useCharacter';
 import { useEpisode } from '@/hooks/useEpisode';
 import { GridCardsContainer } from '@/styles/pages/app';
@@ -11,17 +13,10 @@ export default function Episode() {
 
   const { data, isLoading, error } = useEpisode({ episodeId });
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
-
   function Character({ characterId }: { characterId: string }) {
     const { data, status } = useCharacter({ characterId });
 
-    if (status === 'error') return <p>Error :(</p>;
+    if (status === 'error') return <p>Something went wrong...</p>;
     if (data)
       return <CharacterCard href={`/characters/${characterId}`} {...data} />;
     return <></>;
@@ -30,6 +25,8 @@ export default function Episode() {
   return (
     <div>
       <>
+        {isLoading && <Loading />}
+        {error && <NotFoundComponent />}
         <HeaderInfo>
           <span>{data?.episode}</span>
           <span>{data?.name}</span>
