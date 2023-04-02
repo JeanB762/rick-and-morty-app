@@ -1,4 +1,4 @@
-# Next.js Application with Styled Components and TypeScript  
+# [Next.js Application with Styled Components and TypeScript](https://rick-and-morty-awessome-app.netlify.app/)  
 
 ## This is a sample Next.js application that consumes data from the Rick and Morty API and uses styled-components, npm, and TypeScript. The application contains several pages including a character page, an episode page, a location page, and a favorites page.  
 -----------------------------------------------------------
@@ -8,7 +8,11 @@
   - Click on an episode to view a list of all characters that appeared in that episode
   - Click on a location to view a list of all characters that are currently in that location
   - Click on a character to view their profile page
-  - Add characters to your favorites list from any page
+  - Add characters to your favorites list from any page  
+
+## To access the production app acess:
+  [Rick and Morty awessome app](https://rick-and-morty-awessome-app.netlify.app/)
+
 ## Getting Started
   To get started with this application, follow these steps:
   - Clone this repository: git clone https://github.com/JeanB762/rick-and-morty-app.git
