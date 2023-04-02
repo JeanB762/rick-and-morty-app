@@ -19,9 +19,9 @@ export function Filter() {
           Epsodes
         </FilterButton>
       </Link>{' '}
-      <Link href='/location'>
+      <Link href='/locations'>
         <FilterButton
-          className={router.pathname == '/location' ? 'active' : ''}
+          className={router.pathname == '/locations' ? 'active' : ''}
         >
           Locations
         </FilterButton>

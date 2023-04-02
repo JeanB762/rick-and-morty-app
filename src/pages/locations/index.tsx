@@ -2,13 +2,13 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowSquareOut } from 'phosphor-react';
 import { SearchForm } from '@/components/SearchForm';
-import { useEpisodes } from '@/hooks/useEpisodes';
 import { TableContainer, TableData } from '@/styles/pages/app';
+import { useLocations } from '@/hooks/useLocations';
 
-export default function Episodes() {
+export default function Locations() {
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState('');
-  const { data, isLoading, error } = useEpisodes({ page, name: query });
+  const { data, isLoading, error } = useLocations({ page, name: query });
 
   function changeQuery(query: string) {
     setQuery(query);
@@ -21,14 +21,15 @@ export default function Episodes() {
       {error && <div>Error fetching characters: {error.message}</div>}
       <TableData>
         <tbody>
-          {data?.map((episode) => {
+          {data?.map((location) => {
             return (
-              <tr key={episode.id}>
-                <td width='50%'>{episode.name}</td>
-                <td>{episode.episode}</td>
-                <td>{episode.air_date}</td>
+              <tr key={location.id}>
+                <td width='50%'>{location.name}</td>
+                <td width='50%'>{location.dimension}</td>
+                <td width='50%'>{location.type}</td>
+                <td width='50%'>{location.name}</td>
                 <td>
-                  <Link href={`/episodes/${episode.id}`}>
+                  <Link href={`/locations/${location.id}`}>
                     <ArrowSquareOut size={30} weight='fill' />
                   </Link>
                 </td>

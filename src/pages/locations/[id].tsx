@@ -1,15 +1,15 @@
 import { CharacterCard } from '@/components/CharacterCard';
 import { useCharacter } from '@/hooks/useCharacter';
-import { useEpisode } from '@/hooks/useEpisode';
+import { useLocation } from '@/hooks/useLocation';
 import { GridCardsContainer } from '@/styles/pages/app';
 import { HeaderInfo } from '@/styles/pages/app';
 import { useRouter } from 'next/router';
 
-export default function Episode() {
+export default function Location() {
   const router = useRouter();
-  const episodeId = router.query.id;
+  const locationId = router.query.id;
 
-  const { data, isLoading, error } = useEpisode({ episodeId });
+  const { data, isLoading, error } = useLocation({ locationId });
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -30,12 +30,12 @@ export default function Episode() {
     <div>
       <>
         <HeaderInfo>
-          <span>{data?.episode}</span>
           <span>{data?.name}</span>
-          <span>{data?.air_date}</span>
+          <span>{data?.type}</span>
+          <span>{data?.dimension}</span>
         </HeaderInfo>
         <GridCardsContainer>
-          {data?.characters.map((character) => {
+          {data?.residents.map((character) => {
             const characterUrlParts = character.split('/').filter(Boolean);
             const characterId = characterUrlParts[characterUrlParts.length - 1];
             return <Character key={characterId} characterId={characterId} />;
