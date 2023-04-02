@@ -18,10 +18,10 @@
     ### `npm run dev`
   - Navigate to [http://localhost:3000](http://localhost:3000) in your web browser to see the application running.
 
-  To run Storybook for components documentation
-    - Run 
-    ## `npm run storybook`
-    - Navigate to [http://localhost:6006](http://localhost:6006)
+  To run Storybook for components documentation  
+  - Run  
+    ## `npm run storybook`  
+  - Navigate to [http://localhost:6006](http://localhost:6006)  
 
 ## Technologies Used
   - Next.js
