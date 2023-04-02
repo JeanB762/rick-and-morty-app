@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CharacterCard } from '@/components/CharacterCard';
 import { SearchForm } from '@/components/SearchForm';
 import { useCharacters } from '@/hooks/useCharacters';
@@ -10,6 +10,7 @@ import { Loading } from '@/components/Loading';
 export default function Home() {
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState('');
+
   const { data, isLoading, error } = useCharacters({ page, name: query });
 
   function changeQuery(query: string) {
@@ -39,6 +40,7 @@ export default function Home() {
             name={character.name}
             species={character.species}
             status={character.status}
+            id={character.id}
           />
         ))}
       </GridCardsContainer>

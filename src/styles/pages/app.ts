@@ -53,6 +53,12 @@ export const TableData = styled.table`
       border-top-right-radius: 6px;
       border-bottom-right-radius: 6px;
     }
+
+    a {
+      &:focus {
+        box-shadow: 0 0 0 0 transparent;
+      }
+    }
   }
 
   svg {

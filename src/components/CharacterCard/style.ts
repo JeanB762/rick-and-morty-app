@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-export const CardContainer = styled(Link)`
+export const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,7 +13,6 @@ export const CardContainer = styled(Link)`
   border-radius: 8px;
   width: 14rem;
   height: 17.5rem;
-  text-decoration: none;
 
   &:hover {
     box-shadow: 0px 0px 15px 10px ${({ theme }) => theme['green-500']};
@@ -24,6 +23,15 @@ export const CardContainer = styled(Link)`
   svg {
     color: ${({ theme }) => theme['green-300']};
   }
+`;
+
+export const CardLink = styled(Link)`
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
 `;
 
 export const InfoContent = styled.div`

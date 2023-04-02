@@ -1,3 +1,4 @@
+import FavoriteButton from '@/components/FavoriteButton';
 import { Loading } from '@/components/Loading';
 import { NotFoundComponent } from '@/components/NotFound';
 import { useCharacter } from '@/hooks/useCharacter';
@@ -21,6 +22,7 @@ export default function Profile() {
       {isLoading && <Loading />}
       {error && <NotFoundComponent />}
       <Image src={data?.image} alt={data?.name} />
+      <FavoriteButton size={32} id={String(data?.id)} />
       <ContentBlock>
         <Field>
           <Label>Name:</Label>
