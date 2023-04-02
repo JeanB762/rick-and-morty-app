@@ -9,7 +9,9 @@ interface ButtonProps {
 
 export default function FavoriteButton({ id, size }: ButtonProps) {
   const [isFavorite, setIsFavorite] = useState(
-    localStorage.getItem('favorites')?.includes(id) || false
+    typeof window !== 'undefined'
+      ? localStorage.getItem('favorites')?.includes(id)
+      : false
   );
 
   const handleFavoriteClick = () => {
