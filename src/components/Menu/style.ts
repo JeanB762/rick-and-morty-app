@@ -8,6 +8,13 @@ export const FilterButtonContainer = styled.div`
   border-radius: 8px;
   margin-top: -2rem;
   background-color: ${({ theme }) => theme['gray-600']};
+
+  @media (max-width: 600px) {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
 `;
 
 export const FilterButton = styled.button`
@@ -19,6 +26,12 @@ export const FilterButton = styled.button`
   padding: 0 1.25rem;
   border-radius: 6px;
   cursor: pointer;
+
+  @media (max-width: 600px) {
+    padding: 0 1rem;
+    height: 2rem;
+    width: 100%;
+  }
 
   &.active {
     background: ${({ theme }) => theme['green-300']};

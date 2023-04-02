@@ -18,10 +18,16 @@ export const SearchFormContainer = styled.form`
     }
   }
 
+  @media (max-width: 600px) {
+    gap: 0.5rem;
+  }
+
   button {
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    width: 5rem;
+    justify-content: center;
 
     border: 0;
     padding: 1rem;
@@ -31,6 +37,11 @@ export const SearchFormContainer = styled.form`
     font-weight: bold;
     border-radius: 6px;
     cursor: pointer;
+
+    @media (max-width: 600px) {
+      width: 3rem;
+      padding: 0.5rem;
+    }
 
     &:disabled {
       opacity: 0.6;

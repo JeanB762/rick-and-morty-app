@@ -36,14 +36,17 @@ export default function Episodes() {
             {data?.results.map((episode) => {
               return (
                 <tr key={episode.id}>
-                  <td width='50%'>{episode.name}</td>
-                  <td>{episode.episode}</td>
-                  <td>{episode.air_date}</td>
                   <td>
-                    <Link href={`/episodes/${episode.id}`}>
+                    <Link
+                      href={`/episodes/${episode.id}`}
+                      title='Go to episode details'
+                    >
                       <ArrowSquareOut size={30} weight='fill' />
                     </Link>
                   </td>
+                  <td width='50%'>{episode.name}</td>
+                  <td>{episode.episode}</td>
+                  <td>{episode.air_date}</td>
                 </tr>
               );
             })}

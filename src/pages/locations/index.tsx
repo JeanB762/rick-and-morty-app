@@ -36,15 +36,18 @@ export default function Locations() {
             {data?.results.map((location) => {
               return (
                 <tr key={location.id}>
+                  <td>
+                    <Link
+                      href={`/locations/${location.id}`}
+                      title='Go to location details'
+                    >
+                      <ArrowSquareOut size={30} weight='fill' />
+                    </Link>
+                  </td>
                   <td width='50%'>{location.name}</td>
                   <td width='50%'>{location.dimension}</td>
                   <td width='50%'>{location.type}</td>
                   <td width='50%'>{location.name}</td>
-                  <td>
-                    <Link href={`/locations/${location.id}`}>
-                      <ArrowSquareOut size={30} weight='fill' />
-                    </Link>
-                  </td>
                 </tr>
               );
             })}

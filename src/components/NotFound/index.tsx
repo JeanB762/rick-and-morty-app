@@ -8,7 +8,7 @@ export function NotFoundComponent() {
     <NotFoundCOntainer>
       <Title>Resource not found</Title>
       <Subtitle>Please try again</Subtitle>
-      <Image src={notFoundImage} alt='' height={400} />
+      <Image src={notFoundImage} alt='' height={350} />
     </NotFoundCOntainer>
   );
 }

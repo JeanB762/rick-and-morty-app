@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { FilterButtonContainer, FilterButton } from './style';
 import { useRouter } from 'next/router';
 
-export function Filter() {
+export function Menu() {
   const router = useRouter();
 
   return (

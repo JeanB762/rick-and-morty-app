@@ -40,7 +40,6 @@ export function SearchForm({ query, setQuerySearch }: SearchFormProps) {
       />
       <button type='submit' disabled={isSubmitting}>
         <MagnifyingGlass size={20} />
-        Search
       </button>
     </SearchFormContainer>
   );

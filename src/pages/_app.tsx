@@ -7,7 +7,7 @@ import { defaultTheme } from '@/styles/themes/default';
 import { Header } from '@/components/Header';
 import { AppContainer } from '@/styles/pages/app';
 
-import { Filter } from '@/components/Filter';
+import { Menu } from '@/components/Menu';
 
 export default function App({ Component, pageProps }: AppProps) {
   const queryClient = new QueryClient();
@@ -18,7 +18,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <QueryClientProvider client={queryClient}>
         <Header />
         <AppContainer>
-          <Filter />
+          <Menu />
           <Component {...pageProps} />
           <ReactQueryDevtools initialIsOpen={false} />
         </AppContainer>

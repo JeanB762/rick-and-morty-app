@@ -14,7 +14,6 @@ export const NotFoundCOntainer = styled.div`
 
 export const Title = styled.h2`
   font-size: 3rem;
-
   color: ${({ theme }) => theme['gray-700']};
 `;
 
