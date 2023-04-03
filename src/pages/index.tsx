@@ -27,7 +27,7 @@ export default function Home() {
 
   return (
     <>
-      <SearchForm query={query} setQuerySearch={changeQuery} />
+      <SearchForm query={query} setQuerySearch={changeQuery} placeholder='Search for a character' />
       {isLoading && <Loading />}
       {error && <NotFoundComponent />}
       <GridCardsContainer>

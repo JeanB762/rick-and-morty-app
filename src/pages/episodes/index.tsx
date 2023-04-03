@@ -28,7 +28,7 @@ export default function Episodes() {
   return (
     <>
       <TableContainer>
-        <SearchForm query={query} setQuerySearch={changeQuery} />
+        <SearchForm query={query} setQuerySearch={changeQuery} placeholder='Search for a episode' />
         {isLoading && <Loading />}
         {error && <NotFoundComponent />}
         <TableData>

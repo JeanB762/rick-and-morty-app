@@ -28,7 +28,7 @@ export default function Locations() {
   return (
     <>
       <TableContainer>
-        <SearchForm query={query} setQuerySearch={changeQuery} />
+        <SearchForm query={query} setQuerySearch={changeQuery} placeholder='Search for a location'/>
         {isLoading && <Loading />}
         {error && <NotFoundComponent />}
         <TableData>

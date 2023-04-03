@@ -15,9 +15,14 @@ type SearchFormInputs = z.infer<typeof searchFormSchema>;
 interface SearchFormProps {
   query: string;
   setQuerySearch: (value: string) => void;
+  placeholder: string;
 }
 
-export function SearchForm({ query, setQuerySearch }: SearchFormProps) {
+export function SearchForm({
+  query,
+  setQuerySearch,
+  placeholder,
+}: SearchFormProps) {
   const {
     register,
     handleSubmit,
@@ -34,7 +39,7 @@ export function SearchForm({ query, setQuerySearch }: SearchFormProps) {
     <SearchFormContainer onSubmit={handleSubmit(handleSearchTransactions)}>
       <input
         type='text'
-        placeholder='Character Name'
+        placeholder={placeholder}
         {...register('query')}
         defaultValue={query}
       />
