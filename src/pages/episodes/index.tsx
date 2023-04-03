@@ -3,7 +3,12 @@ import Link from 'next/link';
 import { ArrowSquareOut } from 'phosphor-react';
 import { SearchForm } from '@/components/SearchForm';
 import { useEpisodes } from '@/hooks/useEpisodes';
-import { TableContainer, TableData } from '@/styles/pages/app';
+import {
+  DataContent,
+  DataContainer,
+  DataWrapper,
+  DataInfo,
+} from '@/styles/pages/app';
 import Pagination from '@/components/Pagination/inedx';
 import { NotFoundComponent } from '@/components/NotFound';
 import { Loading } from '@/components/Loading';
@@ -27,31 +32,29 @@ export default function Episodes() {
 
   return (
     <>
-      <TableContainer>
-        <SearchForm query={query} setQuerySearch={changeQuery} placeholder='Search for a episode' />
+      <DataContainer>
+        <SearchForm
+          query={query}
+          setQuerySearch={changeQuery}
+          placeholder='Search for a episode'
+        />
         {isLoading && <Loading />}
         {error && <NotFoundComponent />}
-        <TableData>
-          <tbody>
-            {data?.results.map((episode) => {
-              return (
-                <tr key={episode.id}>
-                  <td>
-                    <Link
-                      href={`/episodes/${episode.id}`}
-                      title='Go to episode details'
-                    >
-                      <ArrowSquareOut size={30} weight='fill' />
-                    </Link>
-                  </td>
-                  <td width='50%'>{episode.name}</td>
-                  <td>{episode.episode}</td>
-                  <td>{episode.air_date}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </TableData>
+        <DataWrapper>
+          {data?.results.map((episode) => {
+            return (
+              <DataContent
+                key={episode.id}
+                href={`/episodes/${episode.id}`}
+                title='Go to episode details'
+              >
+                <DataInfo>{episode.name}</DataInfo>
+                <DataInfo>{episode.episode}</DataInfo>
+                <DataInfo>{episode.air_date}</DataInfo>
+              </DataContent>
+            );
+          })}
+        </DataWrapper>
         {data?.results && (
           <Pagination
             onNext={onNext}
@@ -60,7 +63,7 @@ export default function Episodes() {
             hasNext={!!data?.info.next}
           />
         )}
-      </TableContainer>
+      </DataContainer>
     </>
   );
 }

@@ -2,7 +2,12 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowSquareOut } from 'phosphor-react';
 import { SearchForm } from '@/components/SearchForm';
-import { TableContainer, TableData } from '@/styles/pages/app';
+import {
+  DataContainer,
+  DataContent,
+  DataInfo,
+  DataWrapper,
+} from '@/styles/pages/app';
 import { useLocations } from '@/hooks/useLocations';
 import Pagination from '@/components/Pagination/inedx';
 import { NotFoundComponent } from '@/components/NotFound';
@@ -27,33 +32,30 @@ export default function Locations() {
 
   return (
     <>
-      <TableContainer>
-        <SearchForm query={query} setQuerySearch={changeQuery} placeholder='Search for a location'/>
+      <DataContainer>
+        <SearchForm
+          query={query}
+          setQuerySearch={changeQuery}
+          placeholder='Search for a location'
+        />
         {isLoading && <Loading />}
         {error && <NotFoundComponent />}
-        <TableData>
-          <tbody>
-            {data?.results.map((location) => {
-              return (
-                <tr key={location.id}>
-                  <td>
-                    <Link
-                      href={`/locations/${location.id}`}
-                      title='Go to location details'
-                    >
-                      <ArrowSquareOut size={30} weight='fill' />
-                    </Link>
-                  </td>
-                  <td width='50%'>{location.name}</td>
-                  <td width='50%'>{location.dimension}</td>
-                  <td width='50%'>{location.type}</td>
-                  <td width='50%'>{location.name}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </TableData>
-      </TableContainer>
+        <DataWrapper>
+          {data?.results.map((location) => {
+            return (
+              <DataContent
+                key={location.id}
+                href={`/locations/${location.id}`}
+                title='Go to location details'
+              >
+                <DataInfo>{location.name}</DataInfo>
+                <DataInfo>{location.dimension}</DataInfo>
+                <DataInfo>{location.type}</DataInfo>
+              </DataContent>
+            );
+          })}
+        </DataWrapper>
+      </DataContainer>
       {data?.results && (
         <Pagination
           onNext={onNext}
