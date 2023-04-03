@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const NotFoundContainer = styled.div`
+export const NoFavoritesContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,9 +15,15 @@ export const NotFoundContainer = styled.div`
 export const Title = styled.h2`
   font-size: 3rem;
   color: ${({ theme }) => theme['gray-700']};
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 `;
 
 export const Subtitle = styled.span`
   font-size: 2rem;
   color: ${({ theme }) => theme['gray-700']};
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 `;

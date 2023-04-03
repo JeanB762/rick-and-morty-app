@@ -1,4 +1,3 @@
-import { Heart } from 'phosphor-react';
 import FavoriteButton from '../FavoriteButton';
 import {
   Avatar,

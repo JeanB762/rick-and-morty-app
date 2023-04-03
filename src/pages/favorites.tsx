@@ -1,4 +1,5 @@
 import { CharacterCard } from '@/components/CharacterCard';
+import { NoFavoritesComponent } from '@/components/NoFavorites';
 import { useCharacter } from '@/hooks/useCharacter';
 import { GridCardsContainer } from '@/styles/pages/app';
 import { useEffect, useState } from 'react';
@@ -8,7 +9,12 @@ export default function Favorites() {
 
   useEffect(() => {
     const favoriteIds = localStorage.getItem('favorites')?.split(',') || [];
-    setFavorites(favoriteIds);
+    console.log('favoriteIds >> ', favoriteIds);
+    if (favoriteIds.length > 0) {
+      setFavorites(favoriteIds);
+    } else {
+      setFavorites([]);
+    }
   }, []);
 
   function Character({ characterId }: { characterId: string }) {
@@ -22,13 +28,17 @@ export default function Favorites() {
 
   return (
     <div>
-      <>
-        <GridCardsContainer>
-          {favorites.map((characterId) => {
-            return <Character key={characterId} characterId={characterId} />;
-          })}
-        </GridCardsContainer>
-      </>
+      <GridCardsContainer>
+        {favorites.length ? (
+          <>
+            {favorites.map((characterId) => {
+              return <Character key={characterId} characterId={characterId} />;
+            })}
+          </>
+        ) : (
+          <NoFavoritesComponent />
+        )}
+      </GridCardsContainer>
     </div>
   );
 }

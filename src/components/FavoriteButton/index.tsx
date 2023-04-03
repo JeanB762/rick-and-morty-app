@@ -22,8 +22,12 @@ export default function FavoriteButton({ id, size }: ButtonProps) {
     } else {
       favorites.push(id);
     }
-
-    localStorage.setItem('favorites', favorites.join(','));
+    console.log('favorites button: ', favorites);
+    if (favorites.length > 0) {
+      localStorage.setItem('favorites', favorites.join(','));
+    } else {
+      localStorage.removeItem('favorites');
+    }
     setIsFavorite(!isFavorite);
   };
 
